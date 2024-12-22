@@ -1,0 +1,7 @@
+﻿namespace CppWinRT.Component
+{
+    static runtimeclass StaticClass
+    {
+        static String ToString();
+    }
+}

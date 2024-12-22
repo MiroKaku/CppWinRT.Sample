@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{7A4AB737-EADA-4FBE-BE8F-E1FB0D48F7BF}</ProjectGuid>
+    <ProjectName>CppWinRT.Component</ProjectName>
+    <RootNamespace>CppWinRT.Component</RootNamespace>
+    <MileProjectType>DynamicLibrary</MileProjectType>
+    <DesktopCompatible>true</DesktopCompatible>
+    <CppWinRTOptimized>true</CppWinRTOptimized>
+    <CppWinRTEnableDefaultCopyLocalFalse>true</CppWinRTEnableDefaultCopyLocalFalse>
+  </PropertyGroup>
+  <Import Sdk="Mile.Project.Configurations" Project="Mile.Project.Platform.x86.props" />
+  <Import Sdk="Mile.Project.Configurations" Project="Mile.Project.Platform.x64.props" />
+  <Import Sdk="Mile.Project.Configurations" Project="Mile.Project.Platform.ARM64.props" />
+  <Import Sdk="Mile.Project.Configurations" Project="Mile.Project.Cpp.Default.props" />
+  <Import Sdk="Mile.Project.Configurations" Project="Mile.Project.Cpp.props" />
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>Precompiled.h</PrecompiledHeaderFile>
+      <ForcedIncludeFiles>%(PrecompiledHeaderFile);%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PreprocessorDefinitions>_WINRT_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DisableSpecificWarnings>28204</DisableSpecificWarnings>
+      <WholeProgramOptimization Condition="'$(Configuration)'=='Release'">false</WholeProgramOptimization>
+      <AdditionalOptions>%(AdditionalOptions) /bigobj</AdditionalOptions>
+      <AdditionalUsingDirectories>$(WindowsSDK_WindowsMetadata);$(AdditionalUsingDirectories)</AdditionalUsingDirectories>
+    </ClCompile>
+    <Link>
+      <GenerateWindowsMetadata>true</GenerateWindowsMetadata>
+      <ModuleDefinitionFile>CppWinRT.Component.def</ModuleDefinitionFile>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="Precompiled.h" />
+    <ClInclude Include="BaseClass.h">
+      <DependentUpon>BaseClass.idl</DependentUpon>
+    </ClInclude>
+    <ClInclude Include="Class.h">
+      <DependentUpon>Class.idl</DependentUpon>
+    </ClInclude>
+    <ClInclude Include="StaticClass.h">
+      <DependentUpon>StaticClass.idl</DependentUpon>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Precompiled.cpp">
+      <PrecompiledHeader>Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="BaseClass.cpp">
+      <DependentUpon>BaseClass.idl</DependentUpon>
+    </ClCompile>
+    <ClCompile Include="Class.cpp">
+      <DependentUpon>Class.idl</DependentUpon>
+    </ClCompile>
+    <ClCompile Include="StaticClass.cpp">
+      <DependentUpon>StaticClass.idl</DependentUpon>
+    </ClCompile>
+    <ClCompile Include="$(GeneratedFilesDir)module.g.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Midl Include="BaseClass.idl" />
+    <Midl Include="Class.idl" />
+    <Midl Include="StaticClass.idl" />
+  </ItemGroup>
+  <Import Sdk="Mile.Project.Configurations" Project="Mile.Project.Cpp.targets" />
+</Project>

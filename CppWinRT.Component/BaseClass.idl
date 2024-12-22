@@ -1,0 +1,9 @@
+﻿namespace CppWinRT.Component
+{
+    [default_interface]
+    unsealed runtimeclass BaseClass
+    {
+        BaseClass();
+        String ToString();
+    }
+}

@@ -1,0 +1,12 @@
+﻿import "BaseClass.idl";
+
+namespace CppWinRT.Component
+{
+    [default_interface]
+    runtimeclass Class : BaseClass
+    {
+        Class();
+        String MyProperty;
+        String MyProperty2;
+    }
+}
