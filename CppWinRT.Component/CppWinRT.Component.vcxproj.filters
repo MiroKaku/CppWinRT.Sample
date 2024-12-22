@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="pch.cpp" />
+    <ClCompile Include="Precompiled.cpp" />
     <ClCompile Include="$(GeneratedFilesDir)module.g.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="pch.h" />
+    <ClInclude Include="Precompiled.h" />
   </ItemGroup>
   <ItemGroup>
     <Midl Include="BaseClass.idl" />
-    <Midl Include="WinRTComponent.Class.idl" />
-    <Midl Include="WinRTComponent.StaticClass.idl" />
+    <Midl Include="Class.idl" />
+    <Midl Include="StaticClass.idl" />
   </ItemGroup>
 </Project>
